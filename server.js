@@ -29,14 +29,21 @@ app.use("/api/friendinvitation", friendInvitationRoutes);
 const server = http.createServer(app);
 socketServer.registerSocketServer(server);
 
+console.info(`Connecting to MongoDB: Loading...`);
+
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
     server.listen(PORT, () => {
-      console.info(`Connected to MongoDB`);
+      console.info(
+        `****************** Powered by MongoDB & Socket.IO ****************`
+      );
+      console.info(`Connecting to MongoDB: Success`);
+      console.info(`Listening for real-time communications`);
       console.info(`Server listening on port ${PORT}`);
     });
   })
   .catch((err) => {
+    console.info(`Connecting to MongoDB: Failed`);
     console.error(`Database connection failed. ${err}`);
   });

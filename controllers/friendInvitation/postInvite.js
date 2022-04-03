@@ -8,7 +8,7 @@ const postInvite = async (req, res) => {
 
   // check if invited friend <> of current user
   if (mail.toLowerCase() === targetMailAddress.toLowerCase()) {
-    return res.status(409).send("Sorry dear, cannot invite yourself !");
+    return res.status(409).send("Sorry dear!, cannot invite yourself");
   }
 
   const targetUser = await User.findOne({
@@ -39,7 +39,7 @@ const postInvite = async (req, res) => {
   }
 
   // Create and save new invitation
-  const newInvitation = await FriendInvitation.create({
+  await FriendInvitation.create({
     senderId: userId,
     receiverId: targetUser._id,
   });
