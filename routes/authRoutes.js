@@ -27,4 +27,6 @@ router.post(
   authControllers.controllers.postLogin
 );
 
+router.post("/search", authControllers.controllers.searchUsers);
+
 module.exports = router;
